@@ -47,13 +47,13 @@ const requests = {
 }
 
 const Catalog = {
-    list: () => requests.get('products'),
+    list: () => requests.get('buggy(server-error'),
     details: (id: number) => requests.get(`products/${id}`)
 }
 
 const TestErrors = 
 {
-    get400Error: () => requests.get('buggy/bad-request'),
+    get400Error: () => requests.get('products'),
     get401Error: () => requests.get('buggy/unauthorized'),
     get404Error: () => requests.get('buggy/not-found'),
     get500Error: () => requests.get('buggy/server-error'),
@@ -65,6 +65,8 @@ const Basket = {
     addItem: (productId: number, quantity = 1) => requests.post(`basket?productID=${productId}&quantity=${quantity}`, {}),
     removeItem: (productId: number, quantity = 1) => requests.delete(`basket?productID=${productId}&quantity=${quantity}`)
 }
+
+
 
 const agent = {
     Catalog,
